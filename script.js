@@ -2,16 +2,20 @@
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    navLinks.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', String(!isOpen));
+  });
+}
 
 // Typewriter that never clips
 (function () {
   const el = document.querySelector('.typewriter');
   if (!el) return;
 
-  const full = 'Engineer, Web3 Consultant, Gamer and now .... a Software Developer?!';
+  const full = 'Full-Stack Developer focused on fast, clean web apps for real users.';
   const speed = 30;
   let timer = null;
 
